@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+    
+   
+
+  <head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Quasar is the first native noSQL analytics engine that lets you  run SQL-based analytics on unstructured data.
+">
+    <meta name="authors" content="Julia and Joe">
+
+    <title>REST API Reference</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link href="/css/quasar.css" rel="stylesheet">
+
+    <!-- Custom Fonts -->
+    <link href="/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="/img/favicon.png">
+
+    <!--    Jekyll Defaults <link> -->
+    <link rel="canonical" href="http://quasar-analytics.org//docs/restapi/">
+  <link rel="alternate" type="application/rss+xml" title="Quasar" href="http://quasar-analytics.org//feed.xml" />
+    
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+</head>
+
+
+  <body id="page-top" class="index">
+    <!-- include the doc navbar if the page is a documentation page -->
+    
+        <!-- Doc Navigation -->
+    <nav class="navbar-default navbar-fixed-top">
+        <div class="container-fluid">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header page-scroll">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand page-scroll" href="/#page-top"><img src="/img/quasar-logo.png"></a>
+            </div>
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav navbar-right">
+                    <li class="hidden">
+                        <a href="/#page-top"></a>
+                    </li>
+                    <li>
+                        <a class="page-scroll" href="/#whatisquasar">What is Quasar</a>
+                    </li>
+                    <li>
+                        <a class="page-scroll" href="/#whyquasar">Why Quasar</a>
+                    </li>
+                    <li>
+                        <a class="page-scroll" href="/#joinus">Contribute</a>
+                    </li>
+                    <li>
+                        <a class="page-scroll" href="/docs/home">Docs</a>
+                    </li>
+                    <li>
+                        <a class="page-scroll" href="https://github.com/quasar-analytics/quasar">GitHub</a>
+                    </li>
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container-fluid -->
+    </nav>
+
+    
+
+    <div class="container-fluid">
+  <div class="row">
+    
+<div class="col-sm-3 col-md-2 sidebar"> 
+    <h4>Documentation</h4>
+
+    <ul class="nav-sidebar">
+        
+            
+            
+                
+            
+            
+                
+            
+                
+            
+                
+                  <li class=""><a href="/docs/home/">Getting Started</a></li>
+                  
+        
+            
+            
+                
+            
+            
+                
+            
+                
+                  <li class=""><a href="/docs/sqltutorial/">SQL² Tutorial</a></li>
+                  
+        
+            
+            
+                
+            
+            
+                
+            
+                
+            
+                
+            
+                
+            
+                
+            
+                
+            
+                
+            
+                
+            
+                
+                  <li class=""><a href="/docs/sqlreference/">SQL² Reference</a></li>
+                  
+        
+            
+            
+                
+            
+            
+                
+            
+                
+            
+                
+            
+                
+            
+                
+                  <li class="active"><a href="/docs/restapi/">REST API Reference</a></li>
+                  
+        
+            
+            
+                
+            
+            
+                
+            
+                
+            
+                
+            
+                
+            
+                
+            
+                
+            
+                
+                  <li class=""><a href="/docs/securing/">Securing Quasar Guide</a></li>
+                  
+        
+            
+            
+                
+            
+            
+                
+                  <li class=""><a href="/docs/contributors/">Contributors</a></li>
+                  
+        
+            
+            
+                
+            
+            
+                
+            
+                
+            
+                
+            
+                
+            
+                
+            
+                
+            
+                
+            
+                
+                  <li class=""><a href="/docs/source/">Source Code</a></li>
+                  
+        
+            
+            
+                
+            
+            
+                
+            
+                
+            
+                
+            
+                
+            
+                
+            
+                
+                  <li class=""><a href="/docs/scala/">Scaladoc</a></li>
+                  
+        
+    </ul>
+    
+</div>
+
+  
+
+  
+
+
+
+    <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 doc_main_content "> 
+      <h1 class="page-header">REST API Reference</h1>
+      
+      <h3 id="test-contribution">Test Contribution</h3>
+<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+
+<pre class="code-snippet">
+
+    items = [1, 2, 3, 4, 5]
+    squared = []
+    for i in items:
+        squared.append(i**2)
+          
+</pre>
+
+<div class="alert alert-warning">
+ <span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span> Sensitive data
+<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo</p>
+</div>
+
+<p>Tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+
+
+
+    </div>
+  </div>
+</div>
+        
+
+
+ 
+
+    
+    
+
+    
+
+    <!-- jQuery -->
+    <script src="/js/jquery.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="/js/bootstrap.min.js"></script>
+
+    <!-- Plugin JavaScript -->
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
+    <script src="/js/classie.js"></script>
+    <script src="/js/cbpAnimatedHeader.js"></script>
+    <script src="/js/moment.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/knockout/3.3.0/knockout-min.js"></script>
+
+    <!-- Custom Theme JavaScript -->
+    <script src="/js/quasar.js"></script>
+    <script src="/js/commit_script.js"></script>
+    <script>
+        moment().format();
+    </script>
+
+  </body>
+
+</html>

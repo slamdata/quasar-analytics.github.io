@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+    
+   
+
+  {% include head.html %}
+
+  <body id="page-top" class="index">
+    <!-- include the doc navbar if the page is a documentation page -->
+    {% if page.docs_navbar %}
+        {% include doc_navigation.html %}
+    {% else %}
+        {% include navigation.html %}
+    {% endif %}
+
+    {{ content }}
+
+    {% if page.docs_navbar %}
+    {%else%}
+        {% include footer.html %}
+    {% endif %}
+
+    
+
+    <!-- jQuery -->
+    <script src="{{ "/js/jquery.js" | prepend: site.baseurl }}"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="{{ "/js/bootstrap.min.js" | prepend: site.baseurl }}"></script>
+
+    <!-- Plugin JavaScript -->
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
+    <script src="{{ "/js/classie.js" | prepend: site.baseurl }}"></script>
+    <script src="{{ "/js/cbpAnimatedHeader.js" | prepend: site.baseurl }}"></script>
+    <script src="{{ "/js/moment.js" | prepend: site.baseurl }}"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/knockout/3.3.0/knockout-min.js"></script>
+
+    <!-- Custom Theme JavaScript -->
+    <script src="{{ "/js/quasar.js" | prepend: site.baseurl }}"></script>
+    <script src="{{ "/js/commit_script.js" | prepend: site.baseurl }}"></script>
+    <script>
+        moment().format();
+    </script>
+
+  </body>
+
+</html>

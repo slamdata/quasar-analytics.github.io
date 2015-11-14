@@ -1,0 +1,20 @@
+# Site settings
+title: Quasar
+email: contact@slamdata.com
+description: > # this means to ignore newlines until "baseurl:"
+  Quasar is the first native noSQL analytics engine that lets you 
+  run SQL-based analytics on unstructured data.
+baseurl: "" # the subpath of your site, e.g. /blog/
+url: "http://quasar-analytics.org/" # the base hostname & protocol for your site
+twitter_username: quasar
+github_username: quasar-analytics
+
+# LESS compiling
+gems: ['jekyll-less']
+
+collections:
+  docs:
+    output: true
+
+# Build settings
+markdown: kramdown
