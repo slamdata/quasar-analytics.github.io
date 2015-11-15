@@ -10,7 +10,7 @@ twitter_username: quasar
 github_username: quasar-analytics
 
 # LESS compiling
-#gems: ['jekyll-less']
+gems: ['jekyll-less']
 
 collections:
   docs:
