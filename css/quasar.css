@@ -1536,7 +1536,11 @@ h6 {
 .alert p {
   margin-top: 0.5em;
 }
-#markdown-toc li {
+#markdown-toc ul li {
   color: #494949;
 }
+.markdown-toc ul li {
+  color: #494949;
+}
+
 /*# sourceMappingURL=quasar.css.map */
