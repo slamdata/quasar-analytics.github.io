@@ -1537,7 +1537,7 @@ h6 {
   margin-top: 0.5em;
 }
 
-#markdown-toc ul li ul li {
+#markdown-toc ul li a ul li a {
   color: #494949;
 }
 
