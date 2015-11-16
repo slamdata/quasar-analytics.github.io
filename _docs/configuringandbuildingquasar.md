@@ -1,7 +1,7 @@
 ---
 layout: docs
-title: Configuring Quasar
-permalink: /docs/configuringquasar/
+title: Configuring and Building Quasar
+permalink: /docs/configuringandbuildingquasar/
 docs_navbar: true
 ---
 
