@@ -180,8 +180,8 @@ Filtering using multiple Boolean predicates:
 
 <pre class="code-snippet">
 SELECT c.name FROM "/users" c
-  WHERE c.name = ‘Sherlock Holmes’
-  AND c.street = ‘Baker Street’
+  WHERE c.name = 'Sherlock Holmes'
+  AND c.street = 'Baker Street'
 </pre>
 
 
@@ -278,7 +278,8 @@ the format `YYYY-MM-DD`.
 Example:
 
 <pre class="code-snippet">
-SELECT * FROM "/log/events" c WHERE c.ts > DATE '2015-04-29'
+SELECT * FROM "/log/events" c
+  WHERE c.ts > DATE '2015-04-29'
 </pre>
 
 **Filter based on part of a date.**
@@ -292,7 +293,8 @@ minute, month, quarter, second, and year.
 Example:
 
 <pre class="code-snippet">
-SELECT DATE_PART(‘day’, c.ts) FROM "/log/events" c
+SELECT DATE_PART('day', c.ts)
+  FROM "/log/events" c
 </pre>
 
 **Filter based on a Unix epoch.**
@@ -319,7 +321,7 @@ Example:
 
 <pre class="code-snippet">
 SELECT c.age, COUNT(*) AS cnt
-  FROM “/users” c GROUP BY c.age
+  FROM "/users” c GROUP BY c.age
 </pre>
 
 **Group based on multiple fields.**
@@ -340,9 +342,9 @@ Use the DATE_PART function to group by a part of a date, such as the month.
 Example:
 
 <pre class="code-snippet">
-SELECT DATE_PART(‘day’, c.ts) AS day, COUNT(*) AS cnt
+SELECT DATE_PART('day', c.ts) AS day, COUNT(*) AS cnt
   FROM "/log/events" c
-  GROUP BY DATE_PART(‘day’, c.ts)
+  GROUP BY DATE_PART('day', c.ts)
 </pre>
 
 **Filter within a group.**
@@ -352,10 +354,10 @@ Filter results within a group by adding a HAVING clause followed by a Boolean pr
 Example:
 
 <pre class="code-snippet">
-SELECT DATE_PART(‘day’, c.ts) AS day, COUNT(*) AS cnt
-  FROM “/prod/purger/events” c
-  GROUP BY DATE_PART(‘day’, c.ts)
-  HAVING c.gender = ‘female’
+SELECT DATE_PART('day', c.ts) AS day, COUNT(*) AS cnt
+  FROM "/prod/purger/events” c
+  GROUP BY DATE_PART('day', c.ts)
+  HAVING c.gender = 'female'
 </pre>
 
 **Double grouping**
@@ -432,7 +434,7 @@ Example:
 
 <pre class="code-snippet">
 SELECT DISTINCT * FROM "/users" c
-  WHERE c.profile.allAddresses[*].street.number = ‘221B’
+  WHERE c.profile.allAddresses[*].street.number = '221B'
 </pre>
 
 
@@ -465,13 +467,13 @@ sorting.
 Example (Sort users by ascending age):
 
 <pre class="code-snippet">
-SELECT * FROM “/users” ORDER BY age ASC
+SELECT * FROM "/users” ORDER BY age ASC
 </pre>
 
 Example (Sort users by last digit in age, descending, and full name, ascending):
 
 <pre class="code-snippet">
-SELECT * FROM “/users”
+SELECT * FROM "/users”
   ORDER BY age % 10 DESC,
   firstName + lastName ASC
 </pre>
@@ -523,8 +525,8 @@ The following example generates a code based on gender string values.
 
 <pre class="code-snippet">
 SELECT (CASE c.gender
-  WHEN ‘male’ THEN 1
-  WHEN ‘female’ THEN 2
+  WHEN 'male' THEN 1
+  WHEN 'female' THEN 2
   ELSE 3
   END) AS genderCode FROM "/users" c
 </pre>
