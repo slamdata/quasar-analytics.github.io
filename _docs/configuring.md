@@ -168,7 +168,7 @@ Open up a terminal and navigate to where the JAR files are either build or extra
 To run the REPL (i.e., command-line) JAR, type this command:
 
 <pre class="code-snippet">
-java -jar \<path> [\<config file>]
+java -jar \<path\> [\<config file\>]
 </pre>
 
 
@@ -182,7 +182,7 @@ on the default path of the configuration file.
 To run the a lightweight HTTP server that allows you to programmatically interact with Quasar through API requests, type the following command:
 
 <pre class="code-snippet">
-java -jar \<path> [-c \<config file>]
+java -jar \<path\> [-c \<config file\>]
 </pre>
 
 where \<path\> is the path to the JAR file and \<config file/> is an optional path
