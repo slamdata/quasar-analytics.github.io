@@ -102,9 +102,9 @@ to be quasar-config.json, in one of the following locations:
     1. `%USERPROFILE%\AppData\Local\quasar\quasar-config.json`
     2. `%USERPROFILE%\quasar\quasar-config.json`
 * On Mac OS X, it searches for the file in the following location:
-    $HOME/Library/Application Support/quasar/quasar-config.json
+    `$HOME/Library/Application Support/quasar/quasar-config.json`
 * On Linux systems, it searches for the file in the following location:
-    $HOME/.config/quasar/quasar-config.json
+    `$HOME/.config/quasar/quasar-config.json`
 
 The JSON configuration file has the following format:
 
@@ -168,8 +168,9 @@ Open up a terminal and navigate to where the JAR files are either build or extra
 To run the REPL (i.e., command-line) JAR, type this command:
 
 <pre class="code-snippet">
-java -jar <path> [<config file>]
+java -jar \<path> [\<config file>]
 </pre>
+
 
 where \<path\> is the path to the JAR file and \<config file/> is an optional path
 to the configuration file. See the [Configuration](#configuration) section for details
@@ -181,7 +182,7 @@ on the default path of the configuration file.
 To run the a lightweight HTTP server that allows you to programmatically interact with Quasar through API requests, type the following command:
 
 <pre class="code-snippet">
-java -jar <path> [-c <config file>]
+java -jar \<path> [-c \<config file>]
 </pre>
 
 where \<path\> is the path to the JAR file and \<config file/> is an optional path
