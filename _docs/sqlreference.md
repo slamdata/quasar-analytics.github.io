@@ -210,7 +210,8 @@ SELECT c.age + 2 * 1 / 4 % 2 FROM "/users" c
 Concatenating strings:
 
 <pre class="code-snippet">
-SELECT c.firstName || ' ' || c.lastName AS name FROM "/users" c
+SELECT c.firstName || ' ' || c.lastName AS name
+  FROM "/users" c
 </pre>
 
 Filtering by fuzzy string comparison using the [LIKE](http://www.w3schools.com/sql/sql_like.asp) operator:
