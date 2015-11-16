@@ -5,47 +5,6 @@ permalink: /docs/sqlreference/
 docs_navbar: true
 ---
 
-
-
-
-
-
-
-###Test Contribution
-Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-
-<pre class="code-snippet">
-
-    items = [1, 2, 3, 4, 5]
-    squared = []
-    for i in items:
-        squared.append(i**2)
-          
-</pre>
-
-<div class="alert alert-warning">
- <span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span> Sensitive data
-<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo</p>
-</div>
-
-Tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-
-
-
-
-
-
-
-
 SQL² is a subset of ANSI SQL, designed for queries into SQL relational databases.
 SQL² has support for every major SQL SELECT clause, such as AS, WHERE, JOIN,
 GROUP BY, HAVING, LIMIT, OFFSET, CROSS, etc. It also contains many standard
@@ -188,6 +147,7 @@ when specifying the fields. This is especially useful when you have data from
 more than one source.
 
 Example:
+
 <pre class="code-snippet">
     SELECT c.name, c.age FROM "/users" c
 </pre>
@@ -204,16 +164,19 @@ The following operators are supported:
 **Examples:**
 
 Filtering using a numeric value:
+
 <pre class="code-snippet">
     SELECT c.name FROM "/users" c WHERE c.age > 40
 </pre>
 
 Filtering using a string value:
+
 <pre class="code-snippet">
     SELECT c.name FROM "/users" c WHERE c.name = 'Sherlock Holmes'
 </pre>
 
 Filtering using multiple Boolean predicates:
+
 <pre class="code-snippet">
     SELECT c.name FROM "/users" c WHERE c.name = ‘Sherlock Holmes’ AND
         c.street = ‘Baker Street’
@@ -237,21 +200,25 @@ on numbers and strings. Some common string operators and functions include:
 **Examples:**
 
 Using mathematical operations:
+
 <pre class="code-snippet">
     SELECT c.age + 2 * 1 / 4 % 2 FROM "/users" c
 </pre>
 
 Concatenating strings:
+
 <pre class="code-snippet">
     SELECT c.firstName || ' ' || c.lastName AS name FROM "/users" c
 </pre>
 
 Filtering by fuzzy string comparison using the [LIKE](http://www.w3schools.com/sql/sql_like.asp) operator:
+
 <pre class="code-snippet">
     SELECT * FROM "/users" c WHERE c.firstName LIKE = '%Joan%'
 </pre>
 
 Filtering by regular expression:
+
 <pre class="code-snippet">
     SELECT * FROM "/users" c WHERE c.firstName ~ '[sS]h+'
 </pre>
@@ -281,6 +248,7 @@ Use the TIMESTAMP operator to convert a string into a date and time. The string 
 the format `YYYY-MM-DDTHH:MM:SS`.
 
 Example:
+
 <pre class="code-snippet">
     SELECT * FROM "/log/events" c WHERE c.ts > TIMESTAMP '2015-04-29T15:16:55'
 </pre>
@@ -291,6 +259,7 @@ Use the TIME operator to convert a string into a time. The string should have
 the format `HH:MM:SS`.
 
 Example:
+
 <pre class="code-snippet">
     SELECT * FROM "/log/events" c WHERE c.ts > TIME '15:16:55'
 </pre>
@@ -301,6 +270,7 @@ Use the DATE operator to convert a string into a date. The string should have
 the format `YYYY-MM-DD`.
 
 Example:
+
 <pre class="code-snippet">
     SELECT * FROM "/log/events" c WHERE c.ts > DATE '2015-04-29'
 </pre>
@@ -314,8 +284,9 @@ dow (day of week), doy (day of year), hour, isodoy, microseconds, millenium, mil
 minute, month, quarter, second, and year.
 
 Example:
+
 <pre class="code-snippet">
-    SELECT DATE_PART(‘day’, c.ts) FROM "/log/events" c
+	SELECT DATE_PART(‘day’, c.ts) FROM "/log/events" c
 </pre>
 
 **Filter based on a Unix epoch.**
@@ -336,6 +307,7 @@ SQL² allows you to group data by fields and by date parts.
 Use GROUP BY to group results by a field.
 
 Example:
+
 <pre class="code-snippet">
     SELECT c.age, COUNT(*) AS cnt FROM “/users” c GROUP BY c.age
 </pre>
@@ -345,6 +317,7 @@ Example:
 You can group by multiple fields with a comma-separated list of fields after GROUP  BY.
 
 Example:
+
 <pre class="code-snippet">
     SELECT c.age, c.gender, COUNT(*) AS cnt FROM "/users" c GROUP BY c.age, c.gender
 </pre>
@@ -354,6 +327,7 @@ Example:
 Use the DATE_PART function to group by a part of a date, such as the month.
 
 Example:
+
 <pre class="code-snippet">
     SELECT DATE_PART(‘day’, c.ts) AS day, COUNT(*) AS cnt FROM "/log/events" c
         GROUP BY DATE_PART(‘day’, c.ts)
@@ -364,6 +338,7 @@ Example:
 Filter results within a group by adding a HAVING clause followed by a Boolean predicate.
 
 Example:
+
 <pre class="code-snippet">
     SELECT DATE_PART(‘day’, c.ts) AS day, COUNT(*) AS cnt FROM “/prod/purger/events” c
          GROUP BY DATE_PART(‘day’, c.ts) HAVING c.gender = ‘female’
@@ -379,6 +354,7 @@ Example:
 
 This query returns the average population of states. The outer aggregation function
 (AVG) operates on the results of the inner aggregation (SUM) and GROUP BY clause.
+
 <pre class="code-snippet">
     SELECT AVG(SUM(pop)) FROM "/population" GROUP BY state
 </pre>
@@ -394,6 +370,7 @@ objects) and to contain arrays.
 Nesting is represented by levels separated by a period (`.`).
 
 Example:
+
 <pre class="code-snippet">
     SELECT c.profile.address.street.number FROM "/users" c
 </pre>
@@ -403,6 +380,7 @@ Example:
 Array elements are represented by the array index in square brackets (`[n]`).
 
 Example:
+
 <pre class="code-snippet">
     SELECT c.profile.allAddress[0].street.number FROM "/users" c
 </pre>
@@ -414,12 +392,14 @@ removing levels and flattening the data. Use the asterisk in square brackets (`[
 to extract all array elements.
 
 Example:
+
 <pre class="code-snippet">
     SELECT c.profile.allAddresses[*] FROM "/users" c
 </pre>
 Use the asterisk in curly brackets (`{*}`) to extract all field values.
 
 Example:
+
 <pre class="code-snippet">
     SELECT c.profile.{*} FROM "/users" c
 </pre>
@@ -430,6 +410,7 @@ You can filter using data in all array elements by using the asterisk in square 
 a WHERE clause.
 
 Example:
+
 <pre class="code-snippet">
     SELECT DISTINCT * FROM "/users" c WHERE c.profile.allAddresses[*].street.number = ‘221B’
 </pre>
@@ -444,11 +425,13 @@ set the number of results to be returned and the OFFSET operator to set the inde
 results should start.
 
 Example (Limit results to 20 entries):
+
 <pre class="code-snippet">
     SELECT * FROM "/users" LIMIT 20
 </pre>
 
 Example (Return the 100th to 119th entry):
+
 <pre class="code-snippet">
     SELECT * FROM "/users" OFFSET 100 LIMIT 20
 </pre>
@@ -460,6 +443,7 @@ you can use operators in the ORDER BY arguments. Use ASC for ascending sorting a
 sorting.
 
 Example (Sort users by ascending age):
+
 <pre class="code-snippet">
    SELECT * FROM “/users” ORDER BY age ASC
 </pre>
@@ -479,6 +463,7 @@ Examples:
 
 This example returns the names of employees and the names of the departments they belong to by
 matching up the employee deparment ID with the department's ID, where both IDs are ObjectID types.
+
 <pre class="code-snippet">
     SELECT emp.name, dept.name  FROM "/employees" emp JOIN "/departments" dept ON dept._id = emp.departmentId
 </pre>
@@ -516,13 +501,14 @@ The following example generates a code based on gender string values.
       END) AS genderCode FROM "/users" c
 </pre>
 
- **Nulls**
+**Nulls**
 
- Use the COALESCE function to evaluate the arguments in order and return the current value of the first expression that initially does not evaluate to NULL.
+Use the COALESCE function to evaluate the arguments in order and return the current value of the first expression that initially does not evaluate to NULL.
 
- Example:
+Example:
 
- This example returns a full name, if not null, but returns the first name if the full name is null.
+This example returns a full name, if not null, but returns the first name if the full name is null.
+ 
 <pre class="code-snippet">
      SELECT COALESCE(c.fullName, c.firstName) AS name FROM "/users" c
 </pre>
