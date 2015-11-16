@@ -1,15 +1,8 @@
 ---
 layout: docs
 title: Securing Quasar Guide
-permalink: /docs/securing/
+permalink: /docs/securingquasarguide/
 docs_navbar: true
----
-
----
-layout: page
-title:  "Securing Access to Quasar - Quick Guide"
-date:   2015-10-11 00:00:00
-categories: quickguideresource
 ---
 
 There are several methods of restricting access to Quasar.  This Quick Guide
@@ -99,7 +92,7 @@ be called quasar-config.json and look like this:
     }
 
 For further details on the format of the configuration file, please see the
-Quasar [Configuration](/docs/configuration) documentation.
+Quasar [Configuration](/docs/quasarconfiguration) documentation.
 
 
 ## Testing Quasar

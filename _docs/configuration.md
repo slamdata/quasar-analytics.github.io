@@ -1,7 +1,7 @@
 ---
 layout: docs
-title:  Configuration
-permalink: /docs/configuration
+title:  Quasar Configuration
+permalink: /docs/quasarconfiguration
 docs_navbar: true
 ---
 
