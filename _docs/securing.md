@@ -64,11 +64,11 @@ The first step is to download Quasar and build the source:
 ### Download and Build Quasar
 
 <pre class="code-snippet">
-$ git clone https://github.com/quasar-analytics/quasar
-$ cd quasar
-$ ./sbt test
-$ ./sbt 'project web' oneJar
-$ ./sbt 'project core' oneJar
+git clone https://github.com/quasar-analytics/quasar
+cd quasar
+./sbt test
+./sbt 'project web' oneJar
+./sbt 'project core' oneJar
 </pre>
 
 These commands will download the latest source code, run the test suite,
@@ -113,33 +113,31 @@ or more MongoDB collections.
 
 Notice how the the OS-like file system commands and SQL commands are executed directly after the $ prompt:
 
-<pre class="code-snippet">
-💪 $ ls
-local@
-💪 $ cd local
-💪 $ ls
-local/
-quasar-test/
-testdb/
-💪 $ cd testdb
-💪 $ ls
-coll1
-💪 $ select * from coll1;
-Mongo
-db.coll1.find();
-</pre>
+  💪 $ ls
+  local@
+  💪 $ cd local
+  💪 $ ls
+  local/
+  quasar-test/
+  testdb/
+  💪 $ cd testdb
+  💪 $ ls
+  coll1
+  💪 $ select * from coll1;
+  Mongo
+  db.coll1.find();
+
 
 Results:
 
-<pre class="code-snippet">
-Query time: 0.0s
- name    | age   | gender  | minor  |
----------|-------|---------|--------|
- Johnny  |  42.0 | male    |  false |
- Jenny   |  27.0 | female  |  false |
- Deb     |  33.0 | female  |  false |
- Billy   |  15.0 | male    |   true |
-</pre>
+  Query time: 0.0s
+   name    | age   | gender  | minor  |
+  ---------|-------|---------|--------|
+   Johnny  |  42.0 | male    |  false |
+   Jenny   |  27.0 | female  |  false |
+   Deb     |  33.0 | female  |  false |
+   Billy   |  15.0 | male    |   true |
+
 
 ### Start the Web jar file
 
@@ -161,7 +159,7 @@ Congratulations!  You now have two of the three necessary systems up and running
 On OS X systems, consider using [HomeBrew](http://brew.sh/) to install Nginx:
 
 <pre class="code-snippet">
-$ brew install nginx
+brew install nginx
 </pre>
 
 
@@ -169,14 +167,14 @@ $ brew install nginx
 On RedHat or CentOS systems:
 
 <pre class="code-snippet">
-$ sudo yum install nginx
+sudo yum install nginx
 </pre>
 
 ### Ubuntu / Debian
 On Ubuntu or Debian systems:
 
 <pre class="code-snippet">
-$ sudo apt-get install nginx
+sudo apt-get install nginx
 </pre>
 
 
