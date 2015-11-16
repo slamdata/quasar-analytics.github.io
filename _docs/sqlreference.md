@@ -152,7 +152,7 @@ Example:
 SELECT c.name, c.age FROM "/users" c
 </pre>
 
-<a id="filtering"></a>
+
 ## Filtering a Result Set
 
 You can filter a result set using the WHERE clause.
