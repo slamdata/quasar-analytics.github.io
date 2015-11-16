@@ -113,30 +113,33 @@ or more MongoDB collections.
 
 Notice how the the OS-like file system commands and SQL commands are executed directly after the $ prompt:
 
-  💪 $ ls
-  local@
-  💪 $ cd local
-  💪 $ ls
-  local/
-  quasar-test/
-  testdb/
-  💪 $ cd testdb
-  💪 $ ls
-  coll1
-  💪 $ select * from coll1;
-  Mongo
-  db.coll1.find();
-
+<pre>
+    💪 $ ls
+    local@
+    💪 $ cd local
+    💪 $ ls
+    local/
+    quasar-test/
+    testdb/
+    💪 $ cd testdb
+    💪 $ ls
+    coll1
+    💪 $ select * from coll1;
+    Mongo
+    db.coll1.find();
+</pre>
 
 Results:
 
-  Query time: 0.0s
-   name    | age   | gender  | minor  |
-  ---------|-------|---------|--------|
-   Johnny  |  42.0 | male    |  false |
-   Jenny   |  27.0 | female  |  false |
-   Deb     |  33.0 | female  |  false |
-   Billy   |  15.0 | male    |   true |
+<pre>
+    Query time: 0.0s
+     name    | age   | gender  | minor  |
+    ---------|-------|---------|--------|
+     Johnny  |  42.0 | male    |  false |
+     Jenny   |  27.0 | female  |  false |
+     Deb     |  33.0 | female  |  false |
+     Billy   |  15.0 | male    |   true |
+</pre>
 
 
 ### Start the Web jar file
