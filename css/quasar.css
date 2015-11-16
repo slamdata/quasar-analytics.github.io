@@ -1537,9 +1537,26 @@ h6 {
   margin-top: 0.5em;
 }
 
-#markdown-toc ul li a ul li a {
+#markdown-toc {
   color: #494949;
 }
+
+#markdown-toc  > ul {
+  color: #494949;
+}
+
+#markdown-toc > ul > li {
+  color: #494949;
+}
+
+#markdown-toc > ul > li > ul {
+  color: #494949;
+}
+
+#markdown-toc > ul > li > ul > li {
+  color: #494949;
+}
+
 
 
 
