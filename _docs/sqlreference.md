@@ -13,20 +13,7 @@ where SQL dialects diverge.
 
 This reference contains the following sections:
 
-* Data Types
-* Clauses, Operators, and Functions
-* Basic Selection
-* Filtering a Result Set
-* Numeric and String Operations
-* Dates and Times
-* Grouping
-* Nested Data and Arrays
-* Pagination and Sorting
-* Joining Collections
-* Conditionals and Nulls
-* Specific Database Considerations
 {:toc}
-
 
 ## Data Types
 
