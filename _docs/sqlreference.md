@@ -13,20 +13,21 @@ where SQL dialects diverge.
 
 This reference contains the following sections:
 
-* [Data types](#data-types)
-* [Clauses, Operators, and Functions](#clauses-operators-functions)
-* [Basic selection](#selection)
-* [Filtering a result set](#filtering)
-* [Numeric and string operations](#numbers-and-strings)
-* [Dates and times](#dates-and-times)
-* [Grouping](#grouping)
-* [Nested data and array](#nested)
-* [Pagination and sorting](#paging-sorting)
-* [Joining collections](#joining)
-* [Conditionals and nulls](#conditionals-nulls)
-* [Specific Database Considerations](#database-considerations)
+* Data Types
+* Clauses, Operators, and Functions
+* Basic Selection
+* Filtering a Result Set
+* Numeric and String Operations
+* Dates and Times
+* Grouping
+* Nested Data and Arrays
+* Pagination and Sorting
+* Joining Collections
+* Conditionals and Nulls
+* Specific Database Considerations
+{:toc}
 
-<a id="data-types"></a>
+
 ## Data Types
 
 The following data types are used by SQL².
@@ -65,7 +66,6 @@ as if they were supported by the database.
 (coming soon)
 
 
-<a id="clauses-operators-functions"></a>
 ## Clauses, Operators, and Functions
 
 The following clauses are supported:
@@ -115,7 +115,7 @@ The following functions are supported:
 | Aggregation | `COUNT`, `SUM`, `MIN`, `MAX`, `AVG` |
 | Identity | `SQUASH` |
 
-<a id="selection"></a>
+
 ## Basic Selection
 
 The `SELECT` statement returns a result set of records from one or more tables.
@@ -182,7 +182,7 @@ SELECT c.name FROM "/users" c WHERE c.name = ‘Sherlock Holmes’ AND
 c.street = ‘Baker Street’
 </pre>
 
-<a id="numbers-and-strings"></a>
+
 ## Numeric and String Operations
 
 You can use any of the operators or functions listed in the
@@ -223,7 +223,7 @@ Filtering by regular expression:
 SELECT * FROM "/users" c WHERE c.firstName ~ '[sS]h+'
 </pre>
 
-<a id="dates-and-times"></a>
+
 ## Dates and Times
 
 Filter by dates and times using the `TIMESTAMP`, `TIME`, and `DATE` operators. Also, you
@@ -297,9 +297,9 @@ Example:
 
 <pre class="code-snippet">
 SELECT * FROM "/log/events" c WHERE c.ts > TO_TIMESTAMP(1446335999)
-<pre>
+</pre>
 
-<a id="grouping"></a>
+
 ## Grouping
 
 SQL² allows you to group data by fields and by date parts.
@@ -361,7 +361,7 @@ This query returns the average population of states. The outer aggregation funct
 SELECT AVG(SUM(pop)) FROM "/population" GROUP BY state
 </pre>
 
-<a id="nested"></a>
+
 ## Nested Data and Arrays
 
 Unlike a relational database, many NoSQL databases allows data to be nested (that is, data can be
@@ -417,7 +417,7 @@ Example:
 SELECT DISTINCT * FROM "/users" c WHERE c.profile.allAddresses[*].street.number = ‘221B’
 </pre>
 
-<a id="paging-sorting"></a>
+
 ## Pagination and Sorting
 
 **Pagination**
@@ -456,7 +456,7 @@ Example (Sort users by last digit in age, descending, and full name, ascending):
 SELECT * FROM “/users” ORDER BY age % 10 DESC, firstName + lastName ASC
 </pre>
 
-<a id="joining"></a>
+
 ## Joining Collections
 
 Use the JOIN operator to join different collections.
@@ -476,7 +476,7 @@ If one of the IDs is a string, then use the OID operator to convert it to an ID.
 SELECT emp.name, dept.name  FROM "/employees" emp JOIN "/departments" dept ON dept._id = OID emp.departmentId
 </pre>
 
-<a id="conditionals-nulls"></a>
+
 ## Conditionals and Nulls
 
 **Conditionals**
@@ -516,8 +516,7 @@ SELECT COALESCE(c.fullName, c.firstName) AS name FROM "/users" c
 </pre>
 
 
-<a id="database-considerations"></a>
-## Database Considerations
+## Specific Database Considerations
 
 ### MongoDB
 
