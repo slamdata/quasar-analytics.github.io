@@ -172,14 +172,16 @@ SELECT c.name FROM "/users" c WHERE c.age > 40
 Filtering using a string value:
 
 <pre class="code-snippet">
-SELECT c.name FROM "/users" c WHERE c.name = 'Sherlock Holmes'
+SELECT c.name FROM "/users" c
+  WHERE c.name = 'Sherlock Holmes'
 </pre>
 
 Filtering using multiple Boolean predicates:
 
 <pre class="code-snippet">
-SELECT c.name FROM "/users" c WHERE c.name = ‘Sherlock Holmes’ AND
-c.street = ‘Baker Street’
+SELECT c.name FROM "/users" c
+  WHERE c.name = ‘Sherlock Holmes’
+  AND c.street = ‘Baker Street’
 </pre>
 
 
@@ -214,7 +216,8 @@ SELECT c.firstName || ' ' || c.lastName AS name FROM "/users" c
 Filtering by fuzzy string comparison using the [LIKE](http://www.w3schools.com/sql/sql_like.asp) operator:
 
 <pre class="code-snippet">
-SELECT * FROM "/users" c WHERE c.firstName LIKE = '%Joan%'
+SELECT * FROM "/users" c
+  WHERE c.firstName LIKE = '%Joan%'
 </pre>
 
 Filtering by regular expression:
@@ -250,7 +253,8 @@ the format `YYYY-MM-DDTHH:MM:SS`.
 Example:
 
 <pre class="code-snippet">
-SELECT * FROM "/log/events" c WHERE c.ts > TIMESTAMP '2015-04-29T15:16:55'
+SELECT * FROM "/log/events" c
+  WHERE c.ts > TIMESTAMP '2015-04-29T15:16:55'
 </pre>
 
 **Filter based on a time.**
@@ -261,7 +265,8 @@ the format `HH:MM:SS`.
 Example:
 
 <pre class="code-snippet">
-SELECT * FROM "/log/events" c WHERE c.ts > TIME '15:16:55'
+SELECT * FROM "/log/events" c
+  WHERE c.ts > TIME '15:16:55'
 </pre>
 
 **Filter based on a date.**
@@ -296,7 +301,8 @@ Use the TO_TIMESTAMP function to convert Unix epoch (milliseconds) to a timestam
 Example:
 
 <pre class="code-snippet">
-SELECT * FROM "/log/events" c WHERE c.ts > TO_TIMESTAMP(1446335999)
+SELECT * FROM "/log/events" c
+  WHERE c.ts > TO_TIMESTAMP(1446335999)
 </pre>
 
 
@@ -311,7 +317,8 @@ Use GROUP BY to group results by a field.
 Example:
 
 <pre class="code-snippet">
-SELECT c.age, COUNT(*) AS cnt FROM “/users” c GROUP BY c.age
+SELECT c.age, COUNT(*) AS cnt
+  FROM “/users” c GROUP BY c.age
 </pre>
 
 **Group based on multiple fields.**
@@ -321,7 +328,8 @@ You can group by multiple fields with a comma-separated list of fields after GRO
 Example:
 
 <pre class="code-snippet">
-SELECT c.age, c.gender, COUNT(*) AS cnt FROM "/users" c GROUP BY c.age, c.gender
+SELECT c.age, c.gender, COUNT(*) AS cnt
+  FROM "/users" c GROUP BY c.age, c.gender
 </pre>
 
 **Group based on date part.**
@@ -331,8 +339,9 @@ Use the DATE_PART function to group by a part of a date, such as the month.
 Example:
 
 <pre class="code-snippet">
-SELECT DATE_PART(‘day’, c.ts) AS day, COUNT(*) AS cnt FROM "/log/events" c
-GROUP BY DATE_PART(‘day’, c.ts)
+SELECT DATE_PART(‘day’, c.ts) AS day, COUNT(*) AS cnt
+  FROM "/log/events" c
+  GROUP BY DATE_PART(‘day’, c.ts)
 </pre>
 
 **Filter within a group.**
@@ -342,8 +351,10 @@ Filter results within a group by adding a HAVING clause followed by a Boolean pr
 Example:
 
 <pre class="code-snippet">
-SELECT DATE_PART(‘day’, c.ts) AS day, COUNT(*) AS cnt FROM “/prod/purger/events” c
-GROUP BY DATE_PART(‘day’, c.ts) HAVING c.gender = ‘female’
+SELECT DATE_PART(‘day’, c.ts) AS day, COUNT(*) AS cnt
+  FROM “/prod/purger/events” c
+  GROUP BY DATE_PART(‘day’, c.ts)
+  HAVING c.gender = ‘female’
 </pre>
 
 **Double grouping**
@@ -358,7 +369,8 @@ This query returns the average population of states. The outer aggregation funct
 (AVG) operates on the results of the inner aggregation (SUM) and GROUP BY clause.
 
 <pre class="code-snippet">
-SELECT AVG(SUM(pop)) FROM "/population" GROUP BY state
+SELECT AVG(SUM(pop)) FROM "/population"
+  GROUP BY state
 </pre>
 
 
@@ -374,7 +386,8 @@ Nesting is represented by levels separated by a period (`.`).
 Example:
 
 <pre class="code-snippet">
-SELECT c.profile.address.street.number FROM "/users" c
+SELECT c.profile.address.street.number
+  FROM "/users" c
 </pre>
 
 **Arrays**
@@ -384,7 +397,8 @@ Array elements are represented by the array index in square brackets (`[n]`).
 Example:
 
 <pre class="code-snippet">
-SELECT c.profile.allAddress[0].street.number FROM "/users" c
+SELECT c.profile.allAddress[0].street.number
+  FROM "/users" c
 </pre>
 
 **Flattening**
@@ -396,8 +410,10 @@ to extract all array elements.
 Example:
 
 <pre class="code-snippet">
-SELECT c.profile.allAddresses[*] FROM "/users" c
+SELECT c.profile.allAddresses[*]
+  FROM "/users" c
 </pre>
+
 Use the asterisk in curly brackets (`{*}`) to extract all field values.
 
 Example:
@@ -414,7 +430,8 @@ a WHERE clause.
 Example:
 
 <pre class="code-snippet">
-SELECT DISTINCT * FROM "/users" c WHERE c.profile.allAddresses[*].street.number = ‘221B’
+SELECT DISTINCT * FROM "/users" c
+  WHERE c.profile.allAddresses[*].street.number = ‘221B’
 </pre>
 
 
@@ -453,7 +470,9 @@ SELECT * FROM “/users” ORDER BY age ASC
 Example (Sort users by last digit in age, descending, and full name, ascending):
 
 <pre class="code-snippet">
-SELECT * FROM “/users” ORDER BY age % 10 DESC, firstName + lastName ASC
+SELECT * FROM “/users”
+  ORDER BY age % 10 DESC,
+  firstName + lastName ASC
 </pre>
 
 
@@ -467,13 +486,19 @@ This example returns the names of employees and the names of the departments the
 matching up the employee deparment ID with the department's ID, where both IDs are ObjectID types.
 
 <pre class="code-snippet">
-SELECT emp.name, dept.name  FROM "/employees" emp JOIN "/departments" dept ON dept._id = emp.departmentId
+SELECT emp.name, dept.name
+  FROM "/employees" emp
+  JOIN "/departments" dept
+  ON dept._id = emp.departmentId
 </pre>
 
 If one of the IDs is a string, then use the OID operator to convert it to an ID.
 
 <pre class="code-snippet">
-SELECT emp.name, dept.name  FROM "/employees" emp JOIN "/departments" dept ON dept._id = OID emp.departmentId
+SELECT emp.name, dept.name
+  FROM "/employees" emp
+  JOIN "/departments" dept
+  ON dept._id = OID emp.departmentId
 </pre>
 
 
@@ -512,7 +537,8 @@ Example:
 This example returns a full name, if not null, but returns the first name if the full name is null.
 
 <pre class="code-snippet">
-SELECT COALESCE(c.fullName, c.firstName) AS name FROM "/users" c
+SELECT COALESCE(c.fullName, c.firstName) AS name
+  FROM "/users" c
 </pre>
 
 
