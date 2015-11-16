@@ -127,7 +127,7 @@ To select all values from a path, use the asterisk (`*`).
 Example:
 
 <pre class="code-snippet">
-    SELECT * FROM "/users"
+SELECT * FROM "/users"
 </pre>
 
 **Select specific fields from a path.**
@@ -137,7 +137,7 @@ To select specific fields from a path, use the field names, separated by commas.
 Example:
 
 <pre class="code-snippet">
-    SELECT name, age FROM "/users"
+SELECT name, age FROM "/users"
 </pre>
 
 **Give a path an alias to refer to in the query**
@@ -149,7 +149,7 @@ more than one source.
 Example:
 
 <pre class="code-snippet">
-    SELECT c.name, c.age FROM "/users" c
+SELECT c.name, c.age FROM "/users" c
 </pre>
 
 <a id="filtering"></a>
@@ -166,20 +166,20 @@ The following operators are supported:
 Filtering using a numeric value:
 
 <pre class="code-snippet">
-    SELECT c.name FROM "/users" c WHERE c.age > 40
+SELECT c.name FROM "/users" c WHERE c.age > 40
 </pre>
 
 Filtering using a string value:
 
 <pre class="code-snippet">
-    SELECT c.name FROM "/users" c WHERE c.name = 'Sherlock Holmes'
+SELECT c.name FROM "/users" c WHERE c.name = 'Sherlock Holmes'
 </pre>
 
 Filtering using multiple Boolean predicates:
 
 <pre class="code-snippet">
-    SELECT c.name FROM "/users" c WHERE c.name = ‘Sherlock Holmes’ AND
-        c.street = ‘Baker Street’
+SELECT c.name FROM "/users" c WHERE c.name = ‘Sherlock Holmes’ AND
+c.street = ‘Baker Street’
 </pre>
 
 <a id="numbers-and-strings"></a>
@@ -202,25 +202,25 @@ on numbers and strings. Some common string operators and functions include:
 Using mathematical operations:
 
 <pre class="code-snippet">
-    SELECT c.age + 2 * 1 / 4 % 2 FROM "/users" c
+SELECT c.age + 2 * 1 / 4 % 2 FROM "/users" c
 </pre>
 
 Concatenating strings:
 
 <pre class="code-snippet">
-    SELECT c.firstName || ' ' || c.lastName AS name FROM "/users" c
+SELECT c.firstName || ' ' || c.lastName AS name FROM "/users" c
 </pre>
 
 Filtering by fuzzy string comparison using the [LIKE](http://www.w3schools.com/sql/sql_like.asp) operator:
 
 <pre class="code-snippet">
-    SELECT * FROM "/users" c WHERE c.firstName LIKE = '%Joan%'
+SELECT * FROM "/users" c WHERE c.firstName LIKE = '%Joan%'
 </pre>
 
 Filtering by regular expression:
 
 <pre class="code-snippet">
-    SELECT * FROM "/users" c WHERE c.firstName ~ '[sS]h+'
+SELECT * FROM "/users" c WHERE c.firstName ~ '[sS]h+'
 </pre>
 
 <a id="dates-and-times"></a>
@@ -250,7 +250,7 @@ the format `YYYY-MM-DDTHH:MM:SS`.
 Example:
 
 <pre class="code-snippet">
-    SELECT * FROM "/log/events" c WHERE c.ts > TIMESTAMP '2015-04-29T15:16:55'
+SELECT * FROM "/log/events" c WHERE c.ts > TIMESTAMP '2015-04-29T15:16:55'
 </pre>
 
 **Filter based on a time.**
@@ -261,7 +261,7 @@ the format `HH:MM:SS`.
 Example:
 
 <pre class="code-snippet">
-    SELECT * FROM "/log/events" c WHERE c.ts > TIME '15:16:55'
+SELECT * FROM "/log/events" c WHERE c.ts > TIME '15:16:55'
 </pre>
 
 **Filter based on a date.**
@@ -272,7 +272,7 @@ the format `YYYY-MM-DD`.
 Example:
 
 <pre class="code-snippet">
-    SELECT * FROM "/log/events" c WHERE c.ts > DATE '2015-04-29'
+SELECT * FROM "/log/events" c WHERE c.ts > DATE '2015-04-29'
 </pre>
 
 **Filter based on part of a date.**
@@ -286,7 +286,7 @@ minute, month, quarter, second, and year.
 Example:
 
 <pre class="code-snippet">
-	SELECT DATE_PART(‘day’, c.ts) FROM "/log/events" c
+SELECT DATE_PART(‘day’, c.ts) FROM "/log/events" c
 </pre>
 
 **Filter based on a Unix epoch.**
@@ -295,7 +295,9 @@ Use the TO_TIMESTAMP function to convert Unix epoch (milliseconds) to a timestam
 
 Example:
 
-    SELECT * FROM "/log/events" c WHERE c.ts > TO_TIMESTAMP(1446335999)
+<pre class="code-snippet">
+SELECT * FROM "/log/events" c WHERE c.ts > TO_TIMESTAMP(1446335999)
+<pre>
 
 <a id="grouping"></a>
 ## Grouping
@@ -309,7 +311,7 @@ Use GROUP BY to group results by a field.
 Example:
 
 <pre class="code-snippet">
-    SELECT c.age, COUNT(*) AS cnt FROM “/users” c GROUP BY c.age
+SELECT c.age, COUNT(*) AS cnt FROM “/users” c GROUP BY c.age
 </pre>
 
 **Group based on multiple fields.**
@@ -319,7 +321,7 @@ You can group by multiple fields with a comma-separated list of fields after GRO
 Example:
 
 <pre class="code-snippet">
-    SELECT c.age, c.gender, COUNT(*) AS cnt FROM "/users" c GROUP BY c.age, c.gender
+SELECT c.age, c.gender, COUNT(*) AS cnt FROM "/users" c GROUP BY c.age, c.gender
 </pre>
 
 **Group based on date part.**
@@ -329,8 +331,8 @@ Use the DATE_PART function to group by a part of a date, such as the month.
 Example:
 
 <pre class="code-snippet">
-    SELECT DATE_PART(‘day’, c.ts) AS day, COUNT(*) AS cnt FROM "/log/events" c
-        GROUP BY DATE_PART(‘day’, c.ts)
+SELECT DATE_PART(‘day’, c.ts) AS day, COUNT(*) AS cnt FROM "/log/events" c
+GROUP BY DATE_PART(‘day’, c.ts)
 </pre>
 
 **Filter within a group.**
@@ -340,8 +342,8 @@ Filter results within a group by adding a HAVING clause followed by a Boolean pr
 Example:
 
 <pre class="code-snippet">
-    SELECT DATE_PART(‘day’, c.ts) AS day, COUNT(*) AS cnt FROM “/prod/purger/events” c
-         GROUP BY DATE_PART(‘day’, c.ts) HAVING c.gender = ‘female’
+SELECT DATE_PART(‘day’, c.ts) AS day, COUNT(*) AS cnt FROM “/prod/purger/events” c
+GROUP BY DATE_PART(‘day’, c.ts) HAVING c.gender = ‘female’
 </pre>
 
 **Double grouping**
@@ -356,7 +358,7 @@ This query returns the average population of states. The outer aggregation funct
 (AVG) operates on the results of the inner aggregation (SUM) and GROUP BY clause.
 
 <pre class="code-snippet">
-    SELECT AVG(SUM(pop)) FROM "/population" GROUP BY state
+SELECT AVG(SUM(pop)) FROM "/population" GROUP BY state
 </pre>
 
 <a id="nested"></a>
@@ -372,7 +374,7 @@ Nesting is represented by levels separated by a period (`.`).
 Example:
 
 <pre class="code-snippet">
-    SELECT c.profile.address.street.number FROM "/users" c
+SELECT c.profile.address.street.number FROM "/users" c
 </pre>
 
 **Arrays**
@@ -382,7 +384,7 @@ Array elements are represented by the array index in square brackets (`[n]`).
 Example:
 
 <pre class="code-snippet">
-    SELECT c.profile.allAddress[0].street.number FROM "/users" c
+SELECT c.profile.allAddress[0].street.number FROM "/users" c
 </pre>
 
 **Flattening**
@@ -394,14 +396,14 @@ to extract all array elements.
 Example:
 
 <pre class="code-snippet">
-    SELECT c.profile.allAddresses[*] FROM "/users" c
+SELECT c.profile.allAddresses[*] FROM "/users" c
 </pre>
 Use the asterisk in curly brackets (`{*}`) to extract all field values.
 
 Example:
 
 <pre class="code-snippet">
-    SELECT c.profile.{*} FROM "/users" c
+SELECT c.profile.{*} FROM "/users" c
 </pre>
 
 **Filtering using arrays**
@@ -412,7 +414,7 @@ a WHERE clause.
 Example:
 
 <pre class="code-snippet">
-    SELECT DISTINCT * FROM "/users" c WHERE c.profile.allAddresses[*].street.number = ‘221B’
+SELECT DISTINCT * FROM "/users" c WHERE c.profile.allAddresses[*].street.number = ‘221B’
 </pre>
 
 <a id="paging-sorting"></a>
@@ -427,13 +429,13 @@ results should start.
 Example (Limit results to 20 entries):
 
 <pre class="code-snippet">
-    SELECT * FROM "/users" LIMIT 20
+SELECT * FROM "/users" LIMIT 20
 </pre>
 
 Example (Return the 100th to 119th entry):
 
 <pre class="code-snippet">
-    SELECT * FROM "/users" OFFSET 100 LIMIT 20
+SELECT * FROM "/users" OFFSET 100 LIMIT 20
 </pre>
 
 **Sorting**
@@ -445,13 +447,13 @@ sorting.
 Example (Sort users by ascending age):
 
 <pre class="code-snippet">
-   SELECT * FROM “/users” ORDER BY age ASC
+SELECT * FROM “/users” ORDER BY age ASC
 </pre>
 
 Example (Sort users by last digit in age, descending, and full name, ascending):
 
 <pre class="code-snippet">
-   SELECT * FROM “/users” ORDER BY age % 10 DESC, firstName + lastName ASC
+SELECT * FROM “/users” ORDER BY age % 10 DESC, firstName + lastName ASC
 </pre>
 
 <a id="joining"></a>
@@ -465,13 +467,13 @@ This example returns the names of employees and the names of the departments the
 matching up the employee deparment ID with the department's ID, where both IDs are ObjectID types.
 
 <pre class="code-snippet">
-    SELECT emp.name, dept.name  FROM "/employees" emp JOIN "/departments" dept ON dept._id = emp.departmentId
+SELECT emp.name, dept.name  FROM "/employees" emp JOIN "/departments" dept ON dept._id = emp.departmentId
 </pre>
 
 If one of the IDs is a string, then use the OID operator to convert it to an ID.
 
 <pre class="code-snippet">
-    SELECT emp.name, dept.name  FROM "/employees" emp JOIN "/departments" dept ON dept._id = OID emp.departmentId
+SELECT emp.name, dept.name  FROM "/employees" emp JOIN "/departments" dept ON dept._id = OID emp.departmentId
 </pre>
 
 <a id="conditionals-nulls"></a>
@@ -494,11 +496,11 @@ Example:
 The following example generates a code based on gender string values.
 
 <pre class="code-snippet">
-    SELECT (CASE c.gender
-      WHEN ‘male’ THEN 1
-      WHEN ‘female’ THEN 2
-      ELSE 3
-      END) AS genderCode FROM "/users" c
+SELECT (CASE c.gender
+  WHEN ‘male’ THEN 1
+  WHEN ‘female’ THEN 2
+  ELSE 3
+  END) AS genderCode FROM "/users" c
 </pre>
 
 **Nulls**
@@ -508,9 +510,9 @@ Use the COALESCE function to evaluate the arguments in order and return the curr
 Example:
 
 This example returns a full name, if not null, but returns the first name if the full name is null.
- 
+
 <pre class="code-snippet">
-     SELECT COALESCE(c.fullName, c.firstName) AS name FROM "/users" c
+SELECT COALESCE(c.fullName, c.firstName) AS name FROM "/users" c
 </pre>
 
 
@@ -529,12 +531,12 @@ So SlamData manages `_id` and treats it as a special field.
 <p>**Note:** To filter on `_id`, you must first convert a string to an object ID,
 by using the `OID` function. For example:
 <pre class="code-snippet">
-    SELECT * FROM "/foo" WHERE _id = OID 'abc123'
+SELECT * FROM "/foo" WHERE _id = OID 'abc123'
 </pre>
 By default, the `_id` field will not appear in a result set. However, you can specify it by selecting the
 `_id` field. For example:
 <pre class="code-snippet">
-    SELECT _id AS email FROM "/users"
+SELECT _id AS email FROM "/users"
 </pre>
 </div>
 
