@@ -47,13 +47,13 @@ a.active {
   outline: none;
 }
 a {
-  color: white;
+  color: 494949;
 }
 a:hover,
 a:focus,
 a:active,
 a.active {
-  color: white;
+  color: 494949;
   text-decoration: underline;
 }
 h1,
@@ -1538,10 +1538,6 @@ h6 {
 }
 
 #markdown-toc a {
-  color: #494949;
-}
-
-ol a {
   color: #494949;
 }
 
