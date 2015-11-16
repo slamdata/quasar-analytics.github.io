@@ -44,16 +44,17 @@ a:hover,
 a:focus,
 a:active,
 a.active {
+  color: #494949;
   outline: none;
 }
 a {
-  color: 494949;
+  color: #494949;
 }
 a:hover,
 a:focus,
 a:active,
 a.active {
-  color: 494949;
+  color: #494949;
   text-decoration: underline;
 }
 h1,
