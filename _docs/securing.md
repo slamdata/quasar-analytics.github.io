@@ -1,7 +1,7 @@
 ---
 layout: docs
-title: Securing Quasar Guide
-permalink: /docs/securingquasarguide/
+title: Securing Quasar
+permalink: /docs/securingquasar/
 docs_navbar: true
 ---
 
