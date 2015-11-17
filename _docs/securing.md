@@ -43,7 +43,7 @@ If your IP addresses differ, change as appropriate.
 
 ## Architecture Overview
 
-![Architecture Overview](/img/restrict-quasar.png)
+<img src="/img/restrict-quasar.png" width="500">
 
 As can be noted from the above diagram, the network communications path is straight forward:
 
@@ -102,9 +102,9 @@ Quasar [Configuration](/docs/quasarconfiguration) documentation.
 From the Quasar server, run the core jar file to verify you have connectivity and your mounting is correct:
 
 <pre class="code-snippet">
-java -jar 
-  ~/quasar/core/target/scala-2.11/core_2.11-2.2.1-SNAPSHOT-one-jar.jar
-  ~/quasar-config.json
+java -jar \
+~/quasar/core/target/scala-2.11/core_2.11-2.2.1-SNAPSHOT-one-jar.jar \
+~/quasar-config.json
 </pre>
 
 Once launched, a [REPL](https://en.wikipedia.org/wiki/Read–eval–print_loop) console will appear representing
@@ -148,9 +148,9 @@ Once you have verified proper connectivity between Quasar and MongoDB, stop the 
 and now start the Web jar file with a slightly different syntax to point to the configuration file:
 
 <pre class="code-snippet">
-java -jar
-  ~/quasar/web/target/scala-2.11/web_2.11-2.2.1-SNAPSHOT-one-jar.jar
-  -c ~/quasar-config.json
+java -jar \
+~/quasar/web/target/scala-2.11/web_2.11-2.2.1-SNAPSHOT-one-jar.jar \
+-c ~/quasar-config.json
 </pre>
 
 Congratulations!  You now have two of the three necessary systems up and running for this configuration.
