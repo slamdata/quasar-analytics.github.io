@@ -87,13 +87,13 @@ for `columnDelimeter`, `quoteChar` and `escapeChar`. For example:
 
 The following example returns data for the query:
 
-    SELECT * from "/sample/data/SampleJSON" WHERE state='WA'
+    SELECT * from `/sample/data/SampleJSON` WHERE state="WA"
 
 **Note**: The URL must be encoded: spaces as %20 and the quotes as %22, etc. The URL below does not show this.
 
 #### Request
 
-    GET http://localhost:20223/query/fs?q=SELECT * from "/sample/data/SampleJSON" WHERE state='WA'
+    GET http://localhost:20223/query/fs?q=SELECT * from `/sample/data/SampleJSON` WHERE state="WA"
 
     Headers:
       Accept: application/json
@@ -248,7 +248,7 @@ elements table.
 
 The following example returns data for the query:
 
-    SELECT * from "/sample/data/SampleJSON" WHERE state='WA'
+    SELECT * from `/sample/data/SampleJSON` WHERE state="WA"
 
 It puts the result in a new file called `sampleResults` in the path `/sample/data/`.
 
@@ -257,7 +257,7 @@ It puts the result in a new file called `sampleResults` in the path `/sample/dat
     POST http://localhost:20223/query/fs
 
     POST body:
-      SELECT * from "/sample/data/SampleJSON" WHERE state='WA'
+      SELECT * from `/sample/data/SampleJSON' WHERE state="WA"
 
     Headers:
       Destination: /sample/data/sampleResults
@@ -349,13 +349,13 @@ with an "error" element with message is returned, such as:
 
 The following example returns the plan for the query:
 
-    SELECT * from "/sample/data/SampleJSON" WHERE state='WA'
+    SELECT * from `/sample/data/SampleJSON' WHERE state="WA"
 
 Note that you may need to encode the spaces as %20 and the quotes as %22.
 
 #### Request
 
-    GET http://localhost:20223/compile/fs?q=SELECT * from "/sample/data/SampleJSON" WHERE state='WA'
+    GET http://localhost:20223/compile/fs?q=SELECT * from `/sample/data/SampleJSON` WHERE state="WA"
 
 #### Response
 
